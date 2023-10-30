@@ -8,13 +8,14 @@ import {
 
 function SearchBar() {
   return (
-    <InputGroup w="40%">
-        <InputLeftElement pointerEvents='none'>
+    <InputGroup w="20%" >
+        <InputLeftElement pointerEvents='none' >
             <SearchIcon color='gray.300' />
         </InputLeftElement>
-        <Input placeholder='Search' />
+        <Input placeholder='Search...' />
     </InputGroup>
   )
 }
 
 export default SearchBar;
+
