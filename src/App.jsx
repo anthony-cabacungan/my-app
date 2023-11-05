@@ -1,17 +1,17 @@
 import * as React from 'react'
-import Routes from './Routes'
+import AppNavigator from './AppNavigator'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { Container } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Container bg="blue.50" maxW="1200px" maxL="1000px" p="50px">
-        <Routes />
-      </Container>
+      <Box bg="#00062C" minW="1000px" minH="1000px">
+        <AppNavigator />
+      </Box>
       <Footer/>
     </Router>
   )

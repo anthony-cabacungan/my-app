@@ -8,7 +8,7 @@ import {
 
 function SearchBar() {
   return (
-    <InputGroup w="20%" >
+    <InputGroup w="20%">
         <InputLeftElement pointerEvents='none' >
             <SearchIcon color='gray.300' />
         </InputLeftElement>
