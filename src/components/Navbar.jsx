@@ -2,32 +2,25 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import {
   Flex,
-  Heading,
   Spacer,
   Box,
+  Heading,
+  Button
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
-    <>
-      <Flex as="nav" p="3px" bg="rgb(10,10,9)" alignItems="center" gap="25px" pl="7" pr="7" color="text.300" >
-        <Heading as='h3' size='lg'> Placeholder </Heading>
-        <SearchBar></SearchBar>
-        <Spacer></Spacer>
-        <Link to="/signup"><Box>Sign Up</Box></Link>
-        <Link to="/login"><Box>Login</Box></Link>
-      </Flex>
-      <Flex as="nav" p="3px" bg="#202020" alignItems="center" gap="25px" pl="50px" pr="12" color="text.100">
-        <Link to="/"><Box>Home</Box></Link>
+    <Heading fontWeight={"normal"}>
+      <Flex as="nav" p="30px" bg="#24252A" alignItems="center" gap="25px" pl="10%" pr="10%" color="text.500" fontSize={"sm"}>
+        <Link to="/"><Box fontSize={"xl"}>Placeholder</Box></Link>
+          <Spacer></Spacer>
         <Link to="/explore"><Box>Explore</Box></Link>
         <Link to="/community"><Box>Community</Box></Link>
         <Link to="/about"><Box>About Us</Box></Link>
-        <Link to="/contact"><Box>Contact Us</Box></Link>
+        <Link to="/login"><Button bg={"rgba(0,136,169,1)"} color="text.500" fontSize={"sm"} fontWeight={"normal"}>Login</Button></Link>
       </Flex>
-    </>
-    
-
+    </Heading>
     
   );
 }

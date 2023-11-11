@@ -24,10 +24,10 @@ export default function Home() {
   return (
     // <div style={componentStyle} >
     // </div>
-    <Container maxW={'5xl'} py={12}>
+    <Container maxW={'6xl'} py={12} >
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Stack spacing={4}>
-          <Heading color="text.200" fontWeight={'bold'}  >Your next project starts here.</Heading>
+          <Heading color="text.200" fontWeight={'normal'} fontSize={'5xl'} >Your next project starts here.</Heading>
           <Text color={'gray.500'} fontSize={'lg'}>
           A platform for musicians, audio engineers, producers, and songwriters to 
           discover exciting opportunities.
