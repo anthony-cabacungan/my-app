@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Box bg="#24252A" minW="1000px" minH="1000px">
+      <Box bg="#24252A" minW="1000px" minH="1000px" pl="10%" pr="10%">
         <AppNavigator />
       </Box>
       <Footer/>
