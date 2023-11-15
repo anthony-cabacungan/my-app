@@ -1,12 +1,40 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Container, FormControl, Input, FormLabel, FormHelperText, Button } from '@chakra-ui/react'
 import axios from 'axios'
+import { useAuth } from '../AuthContext.jsx'
+import { useToast } from '@chakra-ui/react'
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { user, login } = useAuth()
+  const navigate = useNavigate()
+
+  const toast = useToast()
+
+  const handleSuccessToast = () => {
+    toast({
+      title: 'Account successfully created!',
+      description: `Welcome ${email}`,
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    })
+  }
+
+  const handleFailureToast = () => {
+    toast({
+      title: 'Account with this email already exists!',
+      description: `Please choose another email or proceed to login.`,
+      status: 'error',
+      duration: 3000,
+      isClosable: true,
+    })
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -18,10 +46,30 @@ export default function Signup() {
       password: password
     })
     .then(res => {
-      console.log(res)
+      const email = res.data.email
+      const token = res.data.token
+
+      // login user in authcontext
+      login(email)
+
+      // save token in local storage
+      localStorage.setItem('token', token)
+
+      // show success toast
+      handleSuccessToast()
+      
+      // redirect user to home page
+      navigate('/')
     })
     .catch((error) => {
-      console.log(error)
+      // clear token in local storage
+      localStorage.clear()
+
+      // log out user in auth context
+      logout()
+
+      // show failure toast
+      handleFailureToast()
     })
   }
 
