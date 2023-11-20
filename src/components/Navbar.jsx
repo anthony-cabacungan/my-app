@@ -41,6 +41,7 @@ function Navbar() {
         <Link to="/community"><Box>Community</Box></Link>
         <Link to="/about"><Box>About Us</Box></Link>
         {user ? (
+          // <Link to="/profile"><Box>Profile</Box></Link>
           <Button bg={"rgba(0,136,169,1)"} color="text.500" fontSize={"sm"} fontWeight={"normal"} onClick={handleLogout}>Logout</Button>
         ) : (
           <Link to="/login"><Button bg={"rgba(0,136,169,1)"} color="text.500" fontSize={"sm"} fontWeight={"normal"}>Login</Button></Link>

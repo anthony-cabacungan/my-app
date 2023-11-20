@@ -7,6 +7,7 @@ import Explore from './pages/Explore'
 import Community from './pages/Community'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Profile from './pages/Profile'
 
 
 
@@ -21,6 +22,7 @@ export default function AppNavigator() {
         <Route exact path="/community" element={<Community />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
+        <Route path="/profile/:username" element={<Profile />} />
 
     </ReactRouterDomRoutes>
   )

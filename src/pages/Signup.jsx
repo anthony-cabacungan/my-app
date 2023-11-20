@@ -8,6 +8,7 @@ import { useToast } from '@chakra-ui/react'
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,7 +20,7 @@ export default function Signup() {
   const handleSuccessToast = () => {
     toast({
       title: 'Account successfully created!',
-      description: `Welcome ${email}`,
+      description: `Welcome ${username}`,
       status: 'success',
       duration: 3000,
       isClosable: true,
@@ -42,6 +43,7 @@ export default function Signup() {
     axios.post('http://localhost:4000/user/signup', {
       first_name: firstName,
       last_name: lastName,
+      username: username,
       email: email,
       password: password
     })
@@ -102,6 +104,15 @@ export default function Signup() {
                 value={email}
             />
           <FormHelperText color="text.100">We'll never share your email.</FormHelperText>
+        </FormControl>
+
+        <FormControl isRequired mb="20px">
+          <FormLabel>Username</FormLabel>
+            <Input 
+                type='text'
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+            />
         </FormControl>
         
         <FormControl isRequired mb="20px">

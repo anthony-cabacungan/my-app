@@ -10,6 +10,11 @@ const userSchema = new Schema({
     last_name: {
         type: String
     },
+    username: {
+        type: String,
+        requried: true,
+        unique: true
+    },
     email: {
         type: String,
         requried: true,
@@ -40,16 +45,38 @@ userSchema.statics.login = async function(email, password) {
 }
 
 // sign up method
-userSchema.statics.signup = async function(first_name, last_name, email, password) {
+userSchema.statics.signup = async function(first_name, last_name, username, email, password) {
     const emailExists = await this.emailExists(email);
     if (emailExists) {
         throw Error('Email already in use')
     }
+
+    const usernameExists = await this.usernameExists(username);
+    if (usernameExists) {
+        throw Error('Username already in use')
+    }
     
     const hashedPassword = await this.hashPassword(password);
-    const user = await this.create({ first_name, last_name, email, password: hashedPassword })
+    const user = await this.create({ first_name, last_name, username, email, password: hashedPassword })
     
     return user
+}
+
+// get profile method
+userSchema.statics.getProfile = async function(username) {
+    const user = await this.findOne({ username });
+    if (!user) {
+        throw Error('Username not found')
+    }
+
+    const userProfile = {
+        first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email,
+    };
+
+    return userProfile
+
 }
 
 // hash password
@@ -69,6 +96,12 @@ userSchema.statics.comparePassword = async function(password_user, password_db) 
 userSchema.statics.emailExists = async function (email) {
     const exists = await this.findOne({ email });
     return !!exists; // Return true if the email exists, false otherwise
+}
+
+// check if username exists
+userSchema.statics.usernameExists = async function (username) {
+    const exists = await this.findOne({ username });
+    return !!exists; // Return true if the username exists, false otherwise
 }
 
 const User = mongoose.model('User', userSchema)
