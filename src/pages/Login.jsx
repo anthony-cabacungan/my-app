@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom"
-import { Container, FormControl, Input, FormLabel, FormHelperText, Button } from '@chakra-ui/react'
+import { useNavigate, Link } from "react-router-dom"
+import { Container, FormControl, Input, FormLabel, Button, Text, FormHelperText } from '@chakra-ui/react'
 import axios from 'axios'
 import { useAuth } from '../AuthContext.jsx'
 import { useToast } from '@chakra-ui/react'
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -81,13 +82,14 @@ export default function Login() {
             />
         </FormControl>
         
-        <FormControl isRequired mb="20px">
+        <FormControl isRequired mb="10px">
           <FormLabel>Password</FormLabel>
             <Input 
               type='password'
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
+          <FormHelperText color="text.100">Don't have an account? <Link to="/signup">Sign up</Link></FormHelperText>
         </FormControl>
 
         <Button type="submit">Sign in</Button>
