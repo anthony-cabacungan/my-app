@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link, Card, CardBody, Heading, Stack, Image, Text } from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
+import { Card, CardBody, Heading, Stack, Image, Text } from '@chakra-ui/react'
 
 const ProfileCard = ({ username, first_name, last_name, description, credits, job_title, picture, location }) => {
     return (
-    <Link>
+    <Link to={`/profile/${username}`}>
         <Card
             direction={{ base: 'column', sm: 'row' }}
             overflow='hidden'

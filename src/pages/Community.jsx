@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { Flex, WrapItem, Wrap, Stack, Avatar, Image, Container, Text } from '@chakra-ui/react'
+import { Flex, Container } from '@chakra-ui/react'
 import ProfileCard from '../components/ProfileCard'
 import axios from 'axios'
 
 export default function Community() {
   const [userProfiles, setUserProfiles] = useState([
     {
-      "username": 1,
+      "username": "kanyewest",
       "first_name": "Kanye",
       "last_name": "West",
       "description": "I am a producer with over 20 years of experience and 10 consecutive US #1 debut albums.",
@@ -16,7 +16,7 @@ export default function Community() {
       "picture": "https://townsquare.media/site/812/files/2023/03/attachment-kanye-west-10.jpg?w=980&q=75"
     },
     {
-      "username": 2,
+      "username": 1,
       "first_name": "Kanye",
       "last_name": "West",
       "description": "I am a producer with over 20 years of experience and 10 consecutive US #1 debut albums. I am a producer with over 20 years of experience and 10 consecutive US #1 debut albumsI am a producer with over 20 years of experience and 10 consecutive US #1 debut albums. I am a producer with over 20 years of experience and 10 consecutive US #1 debut albumsI am a producer with over 20 years of experience and 10 consecutive US #1 debut albums. I am a producer with over 20 years of experience and 10 consecutive US #1 debut albumsI am a producer with over 20 years of experience and 10 consecutive US #1 debut albums. I am a producer with over 20 years of experience and 10 consecutive US #1 debut albums",
@@ -66,13 +66,10 @@ export default function Community() {
   return (
     <Container maxW={'6xl'} py={12} >
       <Flex alignItems={'flex-start'} justify={'space-between'} wrap="wrap" gap={"70"}>
-          {/* <ProfileCard
-            first_name="asdf"
-            last_name="asdf"
-          /> */}
           {userProfiles.map((profile) => (
             <ProfileCard
               key={profile.username}
+              username={profile.username}
               first_name={profile.first_name}
               last_name={profile.last_name}
               description={profile.description}
