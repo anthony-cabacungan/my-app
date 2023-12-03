@@ -13,6 +13,6 @@ router.post('/signup', signupUser)
 router.get('/profile/:username', getOneProfile)
 
 // get all profiles
-router.get('/', getAllProfiles)
+router.get('/all', getAllProfiles)
 
 module.exports = router;
