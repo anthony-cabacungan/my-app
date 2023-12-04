@@ -78,14 +78,15 @@ userSchema.statics.signup = async function(username, first_name, last_name, desc
 }
 
 // get profile method
-userSchema.statics.getProfile = async function(username) {
-    const user = await this.findOne({ username });
+userSchema.statics.getProfile = async function(email) {
+    const user = await this.findOne({ email });
     if (!user) {
         throw Error('Username not found')
     }
 
     const userProfile = {
         username: user.username,
+        email: user.email,
         first_name: user.first_name,
         last_name: user.last_name,
         description: user.description,
@@ -107,6 +108,7 @@ userSchema.statics.getProfiles = async function() {
 
         const userProfiles = users.map(user => ({
             username: user.username,
+            email: user.email,
             first_name: user.first_name,
             last_name: user.last_name,
             description: user.description,

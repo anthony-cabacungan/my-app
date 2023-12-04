@@ -3,9 +3,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
+    email: {
+        type: String,
+        required: true,
+    },
     username: {
         type: String,
-        required: true
+        required: true,
     },
     first_name: {
         type: String
@@ -27,8 +31,8 @@ const jobSchema = new Schema({
 });
 
 // create job method
-jobSchema.statics.createJob = async function (username, title, description, first_name, last_name, picture) {
-    const job = await this.create({ username, title, description, first_name, last_name, picture});
+jobSchema.statics.createJob = async function (username, email, title, description, first_name, last_name, picture) {
+    const job = await this.create({ username, email, title, description, first_name, last_name, picture});
     return job;
 };
 
@@ -41,6 +45,7 @@ jobSchema.statics.getJob = async function (jobId) {
 
     const jobDetails = {
         username: job.username,
+        email: job.email,
         title: job.title,
         description: job.description,
         first_name: job.first_name,
@@ -61,6 +66,7 @@ jobSchema.statics.getAllJobs = async function () {
 
     const jobDetailsArray = jobs.map((job) => ({
         username: job.username,
+        email: job.email,
         title: job.title,
         description: job.description,
         first_name: job.first_name,

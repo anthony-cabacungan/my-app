@@ -33,7 +33,7 @@ export default function Explore() {
       {user ? (
         <Link to="/createjob"> <IconButton mb={"10px"} icon={<AddIcon />}/> </Link>
       ) : null}
-      <Flex alignItems={'flex-start'} justify={'space-between'} wrap="wrap" gap={70}>
+      <Flex alignItems={'flex-start'} justify={'space-between'} wrap="wrap" gap={5}>
         {Array.isArray(allJobs) ? (
           allJobs.map((job) => (
             <JobCard
