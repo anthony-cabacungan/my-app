@@ -46,9 +46,14 @@ export default function Signup() {
     event.preventDefault()
     
     axios.post('http://localhost:4000/user/signup', {
+      username: username,
       first_name: firstName,
       last_name: lastName,
-      username: username,
+      description: description,
+      location: location,
+      credits: credits,
+      job_title: jobtitle,
+      picture: picture,
       email: email,
       password: password
     })
@@ -84,24 +89,6 @@ export default function Signup() {
     <Container maxW="480px" color="text.400" py={12}>
       <form onSubmit={handleSubmit}>
         <FormControl isRequired mb="20px">
-          <FormLabel>First Name</FormLabel>
-            <Input 
-              type='text'
-              onChange={(e) => setFirstName(e.target.value)}
-              value={firstName}
-            />
-          </FormControl>
-
-        <FormControl isRequired mb="20px">
-          <FormLabel>Last Name</FormLabel>
-            <Input 
-                type='text'
-                onChange={(e) => setLastName(e.target.value)}
-                value={lastName}
-            />
-        </FormControl>
-
-        <FormControl isRequired mb="20px">
           <FormLabel>Email address</FormLabel>
             <Input 
                 type='email'
@@ -126,6 +113,69 @@ export default function Signup() {
                 type='password'
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
+            />
+        </FormControl>
+
+        <FormControl isRequired mb="20px">
+          <FormLabel>First Name</FormLabel>
+            <Input 
+              type='text'
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
+            />
+        </FormControl>
+
+        <FormControl isRequired mb="20px">
+          <FormLabel>Last Name</FormLabel>
+            <Input 
+                type='text'
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+            />
+        </FormControl>
+
+        <FormControl isRequired mb="20px">
+          <FormLabel>Description</FormLabel>
+            <Input 
+                type='text'
+                onChange={(e) => setDescription(e.target.value)}
+                value={description}
+            />
+        </FormControl>
+
+        <FormControl isRequired mb="20px">
+          <FormLabel>Location</FormLabel>
+            <Input 
+                type='text'
+                onChange={(e) => setLocation(e.target.value)}
+                value={location}
+            />
+        </FormControl>
+
+        <FormControl isRequired mb="20px">
+          <FormLabel>Credits</FormLabel>
+            <Input 
+                type='text'
+                onChange={(e) => setCredits(e.target.value)}
+                value={credits}
+            />
+        </FormControl>
+
+        <FormControl isRequired mb="20px">
+          <FormLabel>Job Title</FormLabel>
+            <Input 
+                type='text'
+                onChange={(e) => setJobTitle(e.target.value)}
+                value={jobtitle}
+            />
+        </FormControl>
+
+        <FormControl isRequired mb="20px">
+          <FormLabel>Picture</FormLabel>
+            <Input 
+                type='text'
+                onChange={(e) => setPicture(e.target.value)}
+                value={picture}
             />
         </FormControl>
 

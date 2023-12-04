@@ -26,15 +26,20 @@ const loginUser = async (req, res) => {
 
 // signup user
 const signupUser = async (req, res) => {
+    console.log(req.data)
+    const username = req.body.username;
     const first_name = req.body.first_name;
     const last_name = req.body.last_name;
-    const username = req.body.username;
+    const description = req.body.description;
+    const location = req.body.location;
+    const credits = req.body.credits;
+    const job_title = req.body.job_title;
+    const picture = req.body.picture;
     const email = req.body.email;
     const password = req.body.password;
 
     try {
-        const user = await User.signup(first_name, last_name, username, email, password);
-
+        const user = await User.signup(username, first_name, last_name, description, location, credits, job_title, picture, email, password);
         // create JWT
         const _id = user._id
         const token = createToken(_id)
@@ -58,12 +63,14 @@ const getOneProfile = async (req, res) => {
     }
 }
 
-// get one profile
+// get all profiles
 const getAllProfiles = async (req, res) => {
     try {
-
+        const users = await User.getProfiles()
+        console.log(users)
+        res.status(200).json(users)
     } catch (error) {
-        
+        res.status(400).json({error: error.message}) 
     }
 }
 

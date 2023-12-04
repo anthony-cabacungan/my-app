@@ -60,7 +60,7 @@ userSchema.statics.login = async function(email, password) {
 }
 
 // sign up method
-userSchema.statics.signup = async function(first_name, last_name, username, email, password) {
+userSchema.statics.signup = async function(username, first_name, last_name, description, location, credits, job_title, picture, email, password) {
     const emailExists = await this.emailExists(email);
     if (emailExists) {
         throw Error('Email already in use')
@@ -72,7 +72,7 @@ userSchema.statics.signup = async function(first_name, last_name, username, emai
     }
     
     const hashedPassword = await this.hashPassword(password);
-    const user = await this.create({ first_name, last_name, username, email, password: hashedPassword })
+    const user = await this.create({ username, first_name, last_name, description, location, credits, job_title, picture, email, password: hashedPassword })
     
     return user
 }
@@ -91,7 +91,27 @@ userSchema.statics.getProfile = async function(username) {
     };
 
     return userProfile
+}
 
+// get all profiles method
+userSchema.statics.getProfiles = async function() {
+    const users = await this.find({});
+        if (users.length === 0) {
+            throw new Error('No users in the database');
+        }
+
+        const userProfiles = users.map(user => ({
+            username: user.username,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            description: user.description,
+            location: user.location,
+            credits: user.credits,
+            job_title: user.job_title,
+            picture: user.picture
+        }));
+
+    return userProfiles
 }
 
 // hash password
