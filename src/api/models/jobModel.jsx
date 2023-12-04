@@ -5,21 +5,30 @@ const Schema = mongoose.Schema;
 const jobSchema = new Schema({
     username: {
         type: String,
-        required: true,
+        required: true
+    },
+    first_name: {
+        type: String
+    },
+    last_name: {
+        type: String
     },
     title: {
         type: String,
-        required: true,
+        required: true
     },
     description: {
         type: String,
-        required: true,
+        required: true
+    },
+    picture: {
+        type: String
     }
 });
 
 // create job method
-jobSchema.statics.createJob = async function (username, title, description) {
-    const job = await this.create({ username, title, description });
+jobSchema.statics.createJob = async function (username, title, description, first_name, last_name, picture) {
+    const job = await this.create({ username, title, description, first_name, last_name, picture});
     return job;
 };
 
@@ -34,6 +43,9 @@ jobSchema.statics.getJob = async function (jobId) {
         username: job.username,
         title: job.title,
         description: job.description,
+        first_name: job.first_name,
+        last_name: job.last_name,
+        picture: job.picture
     };
 
     return jobDetails;
@@ -50,6 +62,9 @@ jobSchema.statics.getAllJobs = async function () {
         username: job.username,
         title: job.title,
         description: job.description,
+        first_name: job.first_name,
+        last_name: job.last_name,
+        picture: job.picture
     }));
 
     return jobDetailsArray;

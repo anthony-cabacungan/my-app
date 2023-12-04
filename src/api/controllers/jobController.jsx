@@ -1,4 +1,5 @@
 const Job = require('../models/jobModel.jsx');
+const User = require('../models/userModel.jsx');
 
 // create job
 const createJob = async (req, res) => {
@@ -7,8 +8,16 @@ const createJob = async (req, res) => {
     const description = req.body.description;
 
     try {
-        const job = await Job.createJob(username, title, description);
-        res.status(200).json({ title });
+        const user = await User.getProfile(username); 
+        
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        const { first_name, last_name, picture } = user;
+
+        const job = await Job.createJob(username, title, description, first_name, last_name, picture);
+        res.status(200).json(job);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

@@ -144,5 +144,5 @@ userSchema.statics.usernameExists = async function (username) {
     return !!exists; // Return true if the username exists, false otherwise
 }
 
-const User = mongoose.model('User', userSchema)
-module.exports = User
+const User = mongoose.model('User', userSchema);
+module.exports = User;

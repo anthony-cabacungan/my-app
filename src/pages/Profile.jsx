@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Image, Container, Text, SimpleGrid, Flex, Stack, Box, Heading, StackDivider, VStack, List, ListItem, Button } from '@chakra-ui/react'
+import { Image, Container, Text, SimpleGrid, Flex, Stack, Box, Heading, StackDivider, VStack, Button } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 
 export default function Profile() {
@@ -33,6 +33,7 @@ export default function Profile() {
       console.log(error)
     })
   }, [])
+
   return (
     <Container maxW={'6xl'} py={0} color="text.600">
       <SimpleGrid SimpleGrid
@@ -54,12 +55,10 @@ export default function Profile() {
           <Box as={'header'}>
             <Heading
               lineHeight={1.1}
-              fontWeight={600}
               fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
               {firstName} {lastName}
             </Heading>
             <Text
-              fontWeight={300}
               fontSize={'2xl'}>
               {jobTitle}
             </Text>
@@ -82,30 +81,26 @@ export default function Profile() {
             <Box>
               <Text
                 fontSize={{ base: '16px', lg: '18px' }}
-                fontWeight={'500'}
                 textTransform={'uppercase'}
-                mb={'4'}>
+                >
                 Credits:
               </Text>
-
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                 {credits}
               </SimpleGrid>
             </Box>
-            
           </Stack>
-
-          <Button
-            w={'full'}
-            size={'md'}
-            py={'6'}
-            textTransform={'uppercase'}
-            _hover={{
-              transform: 'translateY(2px)',
-              boxShadow: 'lg',
-            }}>
-            Contact {firstName}
-          </Button>
+            <Button
+              w={'full'}
+              size={'md'}
+              py={'6'}
+              textTransform={'uppercase'}
+              _hover={{
+                transform: 'translateY(2px)',
+                boxShadow: 'lg',
+              }}>
+              Contact {firstName}
+            </Button>
         </Stack>
       </SimpleGrid>
     </Container>
