@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { Card, CardBody, Heading, Stack, Text, Image } from '@chakra-ui/react'
 
-const JobCard = ({ username, first_name, last_name, title, description, picture }) => {
+const JobCard = ({ jobId, first_name, last_name, title, description, picture }) => {
     return (
-    <Link to={`/job/${username}`}>
+    <Link to={`/job/${jobId}`}>
         <Card
             direction={{ base: 'column', sm: 'row' }}
             overflow='hidden'
