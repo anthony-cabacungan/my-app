@@ -3,8 +3,12 @@ import { Flex, Container, Text, IconButton } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
 import JobCard from '../components/JobCard'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../AuthContext.jsx'
 
 export default function Explore() {
+  const {user} = useAuth()
+
   const capitalizeFirstLetter = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
@@ -26,7 +30,9 @@ export default function Explore() {
 
   return (
     <Container maxW={'6xl'} text- py={12}>
-      <IconButton mb={"10px"} icon={<AddIcon />} />
+      {user ? (
+        <Link to="/createJob"> <IconButton mb={"10px"} icon={<AddIcon />}/> </Link>
+      ) : null}
       <Flex alignItems={'flex-start'} justify={'space-between'} wrap="wrap" gap={70}>
         {Array.isArray(allJobs) ? (
           allJobs.map((job) => (
