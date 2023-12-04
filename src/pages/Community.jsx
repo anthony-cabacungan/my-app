@@ -26,7 +26,7 @@ export default function Community() {
 
   return (
     <Container maxW={'6xl'} py={12}>
-    <Flex alignItems={'flex-start'} justify={'space-between'} wrap="wrap" gap={70}>
+    <Flex alignItems={'flex-start'} justify={'space-between'} wrap="wrap" gap={35}>
       {Array.isArray(userProfiles) ? (
         userProfiles.map((profile) => (
           <ProfileCard

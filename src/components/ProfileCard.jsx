@@ -12,7 +12,7 @@ const ProfileCard = ({ username, first_name, last_name, description, credits, jo
             minW='4xl'
             minH='250px'
             maxW='4xl'
-            maxH='300px'
+            maxH='250px'
             color="text.600"
             bg='gray.700'
         >       
