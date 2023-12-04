@@ -1,10 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import { Flex, Container } from '@chakra-ui/react'
+import { Flex, Container, Text } from '@chakra-ui/react'
 import ProfileCard from '../components/ProfileCard'
 import axios from 'axios'
 
 export default function Community() {
   const [userProfiles, setUserProfiles] = useState([]);
+
+  const capitalizeFirstLetter = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1)
+  }
 
   useEffect(() => {
     const getAllUsers = async() => {
@@ -28,8 +32,8 @@ export default function Community() {
           <ProfileCard
             key={profile.username}
             username={profile.username}
-            first_name={profile.first_name}
-            last_name={profile.last_name}
+            first_name={capitalizeFirstLetter(profile.first_name)}
+            last_name={capitalizeFirstLetter(profile.last_name)}
             description={profile.description}
             location={profile.location}
             credits={profile.credits}
@@ -38,7 +42,9 @@ export default function Community() {
           />
         ))
       ) : (
-        <p>Loading...</p>
+        <Text color={'gray.500'} fontSize={'lg'}> 
+          Profiles loading...
+        </Text>
       )}
     </Flex>
   </Container>
