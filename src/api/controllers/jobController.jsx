@@ -2,11 +2,12 @@ const Job = require('../models/jobModel.jsx');
 
 // create job
 const createJob = async (req, res) => {
+    const username = req.body.username;
     const title = req.body.title;
     const description = req.body.description;
 
     try {
-        const job = await Job.createJob(title, description);
+        const job = await Job.createJob(username, title, description);
         res.status(200).json({ title });
     } catch (error) {
         res.status(400).json({ error: error.message });
