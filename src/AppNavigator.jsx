@@ -9,8 +9,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Profile from './pages/Profile'
 import Job from './pages/Job'
-
-
+import CreateJob from './pages/CreateJob'
 
 export default function AppNavigator() {
   return (
@@ -23,6 +22,7 @@ export default function AppNavigator() {
         <Route exact path="/community" element={<Community />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/createjob" element={<CreateJob />} />
         <Route path="/job/:jobId" element={<Job />} />
         <Route path="/profile/:username" element={<Profile />} />
 
