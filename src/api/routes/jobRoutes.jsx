@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/create', createJob);
 
 // get one job route
-router.get('/job/:jobId', getOneJob);
+router.get('/:jobId', getOneJob);
 
 // get all jobs route
 router.get('/all', getAllJobs);
