@@ -85,9 +85,14 @@ userSchema.statics.getProfile = async function(username) {
     }
 
     const userProfile = {
+        username: user.username,
         first_name: user.first_name,
         last_name: user.last_name,
-        email: user.email,
+        description: user.description,
+        location: user.location,
+        credits: user.credits,
+        job_title: user.job_title,
+        picture: user.picture
     };
 
     return userProfile
