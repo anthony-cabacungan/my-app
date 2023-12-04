@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Image, Container, Text, SimpleGrid, Flex, Stack, Box, Heading, StackDivider, VStack, Button } from '@chakra-ui/react'
+import { Image, Container, Text, Stack, Box, Heading, StackDivider, VStack, Button } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 
 export default function Job() {
@@ -33,7 +33,6 @@ export default function Job() {
 
   return (
     <Container maxW={'6xl'} py={16} color="text.600">
-
         <Stack spacing={{ base: 6, md: 10 }}>
           <Box as={'header'}>
             <Heading

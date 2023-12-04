@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import { Flex, Container, Text } from '@chakra-ui/react'
+import { Flex, Container, Text, IconButton } from '@chakra-ui/react'
+import { AddIcon } from '@chakra-ui/icons'
 import JobCard from '../components/JobCard'
 import axios from 'axios'
 
@@ -24,7 +25,8 @@ export default function Explore() {
   }, []);
 
   return (
-    <Container maxW={'6xl'} py={12}>
+    <Container maxW={'6xl'} text- py={12}>
+      <IconButton mb={"10px"} icon={<AddIcon />} />
       <Flex alignItems={'flex-start'} justify={'space-between'} wrap="wrap" gap={70}>
         {Array.isArray(allJobs) ? (
           allJobs.map((job) => (
