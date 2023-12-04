@@ -6,9 +6,14 @@ import { useAuth } from '../AuthContext.jsx'
 import { useToast } from '@chakra-ui/react'
 
 export default function Signup() {
+  const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [username, setUsername] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [credits, setCredits] = useState("");
+  const [jobtitle, setJobTitle] = useState("");
+  const [picture, setPicture] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
