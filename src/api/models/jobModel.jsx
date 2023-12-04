@@ -45,7 +45,8 @@ jobSchema.statics.getJob = async function (jobId) {
         description: job.description,
         first_name: job.first_name,
         last_name: job.last_name,
-        picture: job.picture
+        picture: job.picture,
+        _id: job._id
     };
 
     return jobDetails;
@@ -64,7 +65,8 @@ jobSchema.statics.getAllJobs = async function () {
         description: job.description,
         first_name: job.first_name,
         last_name: job.last_name,
-        picture: job.picture
+        picture: job.picture,
+        _id: job._id
     }));
 
     return jobDetailsArray;
