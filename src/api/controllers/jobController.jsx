@@ -8,10 +8,10 @@ const createJob = async (req, res) => {
     const description = req.body.description;
 
     try {
-        const user = await User.getProfile(email); 
+        const user = await User.getProfileByEmail(email); 
         
         if (!user) {
-            throw new Error('User not found');
+            throw new Error('Email not found');
         }
 
         const { first_name, last_name, picture, username } = user;

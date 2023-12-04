@@ -10,9 +10,9 @@ const JobCard = ({ jobId, first_name, last_name, title, description, picture }) 
             overflow='hidden'
             variant='outline'
             minW='4xl'
-            minH='100px'
+            minH='160px'
             maxW='4xl'
-            maxH='300px'
+            maxH='160px'
             color="text.600"
             bg='gray.700'
         >   

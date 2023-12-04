@@ -1,5 +1,5 @@
 const express = require('express');
-const { signupUser, loginUser, getOneProfile, getAllProfiles } = require('../controllers/userController.jsx')
+const { signupUser, loginUser, getOneProfileByUsername, getOneProfileByEmail, getAllProfiles } = require('../controllers/userController.jsx')
 
 const router = express.Router();
 
@@ -9,8 +9,11 @@ router.post('/login', loginUser)
 // signup route
 router.post('/signup', signupUser)
 
-// get one profile
-router.get('/profile/:username', getOneProfile)
+// get one profile by username
+router.get('/profile/username/:username', getOneProfileByUsername)
+
+// get one profile by email
+router.get('/profile/email/:email', getOneProfileByEmail)
 
 // get all profiles
 router.get('/all', getAllProfiles)

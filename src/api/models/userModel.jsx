@@ -77,9 +77,31 @@ userSchema.statics.signup = async function(username, first_name, last_name, desc
     return user
 }
 
-// get profile method
-userSchema.statics.getProfile = async function(email) {
+// get profile method by email
+userSchema.statics.getProfileByEmail = async function(email) {
     const user = await this.findOne({ email });
+    if (!user) {
+        throw Error('Username not found')
+    }
+
+    const userProfile = {
+        username: user.username,
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        description: user.description,
+        location: user.location,
+        credits: user.credits,
+        job_title: user.job_title,
+        picture: user.picture
+    };
+
+    return userProfile
+}
+
+// get profile method by username
+userSchema.statics.getProfileByUsername = async function(username) {
+    const user = await this.findOne({ username });
     if (!user) {
         throw Error('Username not found')
     }

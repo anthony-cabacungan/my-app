@@ -18,7 +18,7 @@ export default function Profile() {
   }
   
   useEffect(() => {
-    axios.get(`http://localhost:4000/user/profile/${username}`)
+    axios.get(`http://localhost:4000/user/profile/username/${username}`)
     .then(res => {
       console.log(res.data)
       setFirstName(capitalizeFirstLetter(res.data.first_name))
